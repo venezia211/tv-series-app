@@ -19,10 +19,10 @@ class Series extends Component {
       .then(response => response.json())
       .then(json => this.setState({ series: json, isFetching: false}));
 
-  }
+  };
 
   render() {
-    const {series, seriesName, isFetching} = this.state;
+    const { series, seriesName, isFetching} = this.state;
 
     return (
       <div>
@@ -30,15 +30,17 @@ class Series extends Component {
 
         <div>
           <input 
+           autoFocus={true}
            value= {seriesName}
            type='text' 
-           onChange={this.onSeriesInputChange} />
+           onChange={this.onSeriesInputChange} 
+          />
         </div>
         {
           !isFetching && series.length === 0 && seriesName.trim() === ''
-           && 
+           && (
           <p> Please enter series name into the input </p> 
-        }
+           )}
         {
           !isFetching && series.length === 0 && seriesName.trim() !== ''
           && 
@@ -48,11 +50,11 @@ class Series extends Component {
           isFetching && <Loader />
         }
         {
-          isFetching && <SeriesList list={this.state.series} />    
+          !isFetching && <SeriesList list={this.state.series} />    
 
         }
       </div>
-    )
+    );
   }
 }
 
