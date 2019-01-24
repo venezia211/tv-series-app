@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Intro from '../Intro'
+import Intro from '../Intro';
+import Series from '../../containers/Series';
 import './App.css';
+import 'whatwg-fetch';
 
 
 class App extends Component {
@@ -10,11 +12,20 @@ class App extends Component {
 
       
 componentDidMount() {
-  const series = ['Happy', 'Sopranos', 'Banshee'];
+  fetch('http://api.tvmaze.com/search/shows?q=Vikings') 
+  .then(response => response.json())
+  .then(json => this.setState({series: json}))
 
-  setTimeout(() => {
-    this.setState({series: series });
-  }, 2000);
+
+
+  //get json from response object.
+
+  //const series = ['Happy', 'Sopranos', 'Banshee'];
+
+  // setTimeout(() => {
+  //   this.setState({series: series });
+  // }, 2000);
+  // //Inside your object if you’re using the same names on your property you can actually delete ex: series: series = series
     //first is function 2nd is delay
 
 }    
@@ -28,7 +39,7 @@ componentDidMount() {
         </header>
        <Intro message="Here you can find all of your most loved series" />   
        The length of series array - {this.state.series.length}      
-       
+       <Series />
       </div>
     );
   }
