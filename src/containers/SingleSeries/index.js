@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Loader from '../../components/Loader'
+import { Link } from 'react-router-dom';
 
 
 class SingleSeries extends Component {
@@ -28,12 +29,17 @@ class SingleSeries extends Component {
           &&
          <div> 
            <p>{show.name}</p>
-           <p>Premiered - {show.premiered}</p>
-           <p>Rating - {show.rating.average}</p>
+           <p> Premiered - {show.premiered}</p>
+           <p> Rating - {show.rating.average}</p>
            <p> Episodes - {show._embedded.episodes.length} </p>
            <p>
               <img alt = 'show' src={show.image.medium} /> 
           </p>
+          <button>
+            <Link to={`/`} style={{ color: 'white'}}>
+            Back to Search
+            </Link>
+          </button>
          </div> 
         }
       </div>  

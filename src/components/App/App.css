@@ -30,3 +30,12 @@
     transform: rotate(360deg);
   }
 } */
+
+button {
+  background: black;
+  padding: 5px 10px;
+  border-radius: 17px;
+  font-size: 1.3em;
+  outline: none;
+  border: none;
+}
